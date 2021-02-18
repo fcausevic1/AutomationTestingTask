@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutomationTestingTask
+namespace AutomationTestingTask.Pages
 {
-    public class Class1
+    class RegisterPage
     {
     }
 }

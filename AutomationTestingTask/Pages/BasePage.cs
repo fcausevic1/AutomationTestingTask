@@ -15,6 +15,10 @@ namespace AutomationTestingTask.Tests
 		{
 			this.driver = driver;
 		}
+		public static void WaitToLoad(IWebDriver driver, double seconds)
+		{
+			driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(seconds);
+		}
 	}
 }
 

@@ -17,7 +17,9 @@ namespace AutomationTestingTask.Tests
         public void VerifyThatUserCanGoToRegisterLoadPage()
         {
             RegisterLoginPage registerLogin = landingPage.SignInOrRegister();
+            registerLogin.VerifyThatPageHasLoaded();
         }
+        
     }
 }
 

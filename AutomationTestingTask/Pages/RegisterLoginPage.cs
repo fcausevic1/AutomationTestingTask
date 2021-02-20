@@ -1,6 +1,7 @@
 ﻿using AutomationTestingTask.Tests;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using proba.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +13,31 @@ namespace AutomationTestingTask.Pages
     public class RegisterLoginPage : BasePage
     {
         IWebElement registerText => driver.FindElement(By.XPath("//*[contains(text(),'Create an account')]"));
+        IWebElement registerMailField => driver.FindElement(By.Id("email_create"));
+        IWebElement creatAnAccountButton => driver.FindElement(By.Id("SubmitCreate"));
+        IWebElement registerForm => driver.FindElement(By.Id("noSlide"));
 
         public RegisterLoginPage(IWebDriver driver) : base(driver) { }
 
+
         public void VerifyThatPageHasLoaded()
         {
-            Assert.True(registerText.Displayed);
+            Assert.True(ElementExtension.WaitUntilClickable(registerText, driver, 5));
+        }
+
+        public RegisterPage Register(string email)
+        {
+            registerMailField.SendKeys(email);
+            creatAnAccountButton.Click();
+
+            return new RegisterPage(driver);
+        }
+
+        public void VerifyThatUserHasBeenGivenRegisterForm()
+        {
+
+            RegisterLoginPage.WaitToLoad(driver, 5);
+            Assert.True(registerForm.Displayed);
         }
     }
 }

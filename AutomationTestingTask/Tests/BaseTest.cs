@@ -30,5 +30,7 @@ namespace AutomationTestingTask.Tests
             driver.Close();
            driver.Quit();
         }
+
+       
     }
 }

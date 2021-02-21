@@ -16,6 +16,11 @@ namespace AutomationTestingTask.Pages
         IWebElement registerMailField => driver.FindElement(By.Id("email_create"));
         IWebElement creatAnAccountButton => driver.FindElement(By.Id("SubmitCreate"));
         IWebElement registerForm => driver.FindElement(By.Id("noSlide"));
+        IWebElement logInEmailField => driver.FindElement(By.Id("email"));
+        IWebElement logInPasswordField => driver.FindElement(By.Id("passwd"));
+        IWebElement logInButton => driver.FindElement(By.Id("SubmitLogin"));
+        
+       
 
         public RegisterLoginPage(IWebDriver driver) : base(driver) { }
 
@@ -39,5 +44,18 @@ namespace AutomationTestingTask.Pages
             RegisterLoginPage.WaitToLoad(driver, 5);
             Assert.True(registerForm.Displayed);
         }
+
+        public UserProfilePage LogIn(string email, string password)
+        {
+            logInEmailField.SendKeys(email);
+            logInPasswordField.SendKeys(password);
+            logInButton.Click();
+
+            return new UserProfilePage(driver);
+        }
+
+        
+
+        
     }
 }

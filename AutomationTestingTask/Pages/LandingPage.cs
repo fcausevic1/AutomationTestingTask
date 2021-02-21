@@ -11,8 +11,9 @@ namespace AutomationTestingTask.Pages
 {
     public class LandingPage : BasePage
     {
-        
-        IWebElement signInButton=> driver.FindElement(By.ClassName("login"));
+
+        IWebElement signInButton => driver.FindElement(By.ClassName("login"));
+        IWebElement signOutButton => driver.FindElement(By.ClassName("logout"));
 
         public LandingPage(IWebDriver driver) : base(driver) { }
 
@@ -20,7 +21,27 @@ namespace AutomationTestingTask.Pages
         {
             signInButton.Click();
             return new RegisterLoginPage(driver);
+        }
 
+        public UserProfilePage LogIn(string email, string password)
+        {
+            RegisterLoginPage registerLoginPage = SignInOrRegister();
+            UserProfilePage userProfilePage = registerLoginPage.LogIn(email, password);
+            userProfilePage.VerifyThatUserIsLoggedIn();
+            return userProfilePage;
+
+        }
+
+        public LandingPage LogOut()
+        {         
+            signOutButton.Click();
+           
+            return new LandingPage(driver);
+        }
+
+        public void VerifyThatUserIsNotLogedIn()
+        {
+            Assert.True(signInButton.Displayed);
         }
     }
 }

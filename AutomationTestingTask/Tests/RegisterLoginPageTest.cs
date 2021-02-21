@@ -20,5 +20,27 @@ namespace AutomationTestingTask
             registerLogin.VerifyThatUserHasBeenGivenRegisterForm();
         }
 
+        [Test]
+        public void VerifyThatUserCanSignIn()
+        {
+            string email = "nest.ene@nest.com";
+            string password = "test123";
+            RegisterLoginPage registerLoginPage = landingPage.SignInOrRegister();
+            UserProfilePage userProfilePage = registerLoginPage.LogIn(email, password);
+            userProfilePage.VerifyThatUserIsLoggedIn();
+        }
+
+        [Test]
+        public void VerifyThatUserCanSignOut()
+        {
+            string email = "nest.ene@nest.com";
+            string password = "test123";
+            RegisterLoginPage registerLoginPage = landingPage.SignInOrRegister();
+            UserProfilePage userProfilePage = registerLoginPage.LogIn(email, password);
+            userProfilePage.VerifyThatUserIsLoggedIn();
+            landingPage.LogOut();
+            landingPage.VerifyThatUserIsNotLogedIn();
+        }
+
     }
 }

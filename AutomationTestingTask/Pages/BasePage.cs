@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using AutomationTestingTask.Pages;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace AutomationTestingTask.Tests
 	public class BasePage
 	{
 		public IWebDriver driver;
-
+		LandingPage landingPage;
 		public BasePage(IWebDriver driver)
 		{
 			this.driver = driver;
@@ -19,6 +20,11 @@ namespace AutomationTestingTask.Tests
 		{
 			driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(seconds);
 		}
+
+		public LandingPage Start()
+        {
+			return new LandingPage(driver);
+        }
 	}
 }
 

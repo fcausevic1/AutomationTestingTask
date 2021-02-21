@@ -45,7 +45,7 @@ namespace AutomationTestingTask.Pages
             Assert.True(registerForm.Displayed);
         }
 
-        public UserProfilePage LogIn(string email, string password)
+        public UserProfilePage LogIn(string email= "nest.ene@nest.com", string password="test123")
         {
             logInEmailField.SendKeys(email);
             logInPasswordField.SendKeys(password);

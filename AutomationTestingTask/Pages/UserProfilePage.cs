@@ -9,14 +9,16 @@ using System.Threading.Tasks;
 
 namespace AutomationTestingTask.Pages
 {
-    public  class UserProfilePage : BasePage
+    public class UserProfilePage : BasePage
     {
-        
+
 
         IWebElement accountButton => driver.FindElement(By.ClassName("account"));
         IWebElement signOutButton => driver.FindElement(By.ClassName("logout"));
         IWebElement orderHistory => driver.FindElement(By.ClassName("icon-list-ol"));
         IWebElement creditSlips => driver.FindElement(By.ClassName("icon-ban-circle"));
+        IWebElement myAddresses => driver.FindElement(By.ClassName("icon-building"));
+
 
         public UserProfilePage(IWebDriver driver) : base(driver) { }
 
@@ -42,7 +44,15 @@ namespace AutomationTestingTask.Pages
             creditSlips.Click();
             return new CreditSlipsPage(driver);
         }
-            
+
+        public MyAddressesPage CheckAddresses()
+        {
+            myAddresses.Click();
+            return new MyAddressesPage(driver);
+        }
+
+
+
 
 
     }

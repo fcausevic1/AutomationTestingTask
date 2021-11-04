@@ -27,7 +27,7 @@ namespace AutomationTestingTask.Tests
         [TearDown]
         public void TearDown()
         {
-            driver.Close();
+           driver.Close();
            driver.Quit();
         }
 

@@ -16,7 +16,7 @@ namespace AutomationTestingTask.Pages
         IWebElement registerMailField => driver.FindElement(By.Id("email_create"));
         IWebElement creatAnAccountButton => driver.FindElement(By.Id("SubmitCreate"));
         IWebElement registerForm => driver.FindElement(By.Id("noSlide"));
-        IWebElement logInEmailField => driver.FindElement(By.Id("email"));
+        IWebElement logInEmailField => driver.FindElement(By.Id("email"),5);
         IWebElement logInPasswordField => driver.FindElement(By.Id("passwd"));
         IWebElement logInButton => driver.FindElement(By.Id("SubmitLogin"));
         
